@@ -14,7 +14,7 @@ spec:
     bypass: BreakGlassAnnotation
     contactImageScanners: DoNotScanInline
     listenOnCreates: true
-    timeoutSeconds: 3
+    timeoutSeconds: 2
     listenOnEvents: true
   centralEndpoint: central-stackrox.{{ .Values.global.hubClusterDomain }}:443
   perNode:
