@@ -5,6 +5,15 @@ metadata:
   name: stackrox-central-services
 spec:
   central:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100m
+    db:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100m
     exposure:
       loadBalancer:
         enabled: false
