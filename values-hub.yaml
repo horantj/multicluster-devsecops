@@ -124,6 +124,12 @@ clusterGroup:
       project: hub
       path: charts/hub/cli-tools
 
+    hub-policy:
+      name: additional-hub-policies
+      namespace: openshift
+      project: opp
+      path: charts/hub/policies
+
   imperative: {}
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
