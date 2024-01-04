@@ -1,0 +1,11 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  labels:
+    open-cluster-management.io/policy-set: additional-hub-policies
+  name: openshift-plus-hub
+  namespace: policies
+spec:
+  description: This policy set is for addition policies to be applied to a hub cluster
+  policies:
+  - policy-comp-operator
