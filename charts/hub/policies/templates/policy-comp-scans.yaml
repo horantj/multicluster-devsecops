@@ -14,19 +14,29 @@ spec:
   disabled: false
   policy-templates:
     - objectDefinition:
-        apiVersion: compliance.openshift.io/v1alpha1
-        kind: ScanSettingBinding
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
         metadata:
-          name: cis-compliance
-          namespace: openshift-compliance
-        profiles:
-          - name: ocp4-pci-dss-node-3-2
-            kind: Profile
-            apiGroup: compliance.openshift.io/v1alpha1
-          - name: ocp4-pci-dss-3-2
-            kind: Profile
-            apiGroup: compliance.openshift.io/v1alpha1
-        settingsRef:
-          name: default
-          kind: ScanSetting
-          apiGroup: compliance.openshift.io/v1alpha1
+          name: policy-comp-scans
+        spec:
+          remediationAction: enforce # will be overridden by remediationAction in parent policy
+          severity: high
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: compliance.openshift.io/v1alpha1
+                kind: ScanSettingBinding
+                metadata:
+                  name: cis-compliance
+                  namespace: openshift-compliance
+                profiles:
+                  - name: ocp4-pci-dss-node-3-2
+                    kind: Profile
+                    apiGroup: compliance.openshift.io/v1alpha1
+                  - name: ocp4-pci-dss-3-2
+                    kind: Profile
+                    apiGroup: compliance.openshift.io/v1alpha1
+                settingsRef:
+                  name: default
+                  kind: ScanSetting
+                  apiGroup: compliance.openshift.io/v1alpha1
