@@ -1,0 +1,32 @@
+# This policy enabled scan configurations for the compliance operator
+
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-comp-scans
+  namespace: policies
+  annotations:
+    policy.open-cluster-management.io/standards: NIST SP 800-53
+    policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
+    policy.open-cluster-management.io/controls: CA-2 Security Assessments, CA-7 Continuous Monitoring
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: compliance.openshift.io/v1alpha1
+        kind: ScanSettingBinding
+        metadata:
+          name: cis-compliance
+          namespace: openshift-compliance
+        profiles:
+          - name: ocp4-pci-dss-node-3-2
+            kind: Profile
+            apiGroup: compliance.openshift.io/v1alpha1
+          - name: ocp4-pci-dss-3-2
+            kind: Profile
+            apiGroup: compliance.openshift.io/v1alpha1
+        settingsRef:
+          name: default
+          kind: ScanSetting
+          apiGroup: compliance.openshift.io/v1alpha1

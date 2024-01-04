@@ -9,3 +9,4 @@ spec:
   description: This policy set is for addition policies to be applied to a hub cluster
   policies:
   - policy-comp-operator
+  - policy-comp-scans
