@@ -1,0 +1,12 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  labels:
+    open-cluster-management.io/policy-set: additional-managed-policies
+  name: additional-managed-policies
+  namespace: policies
+spec:
+  description: This policy set is for addition policies to be applied to a hub cluster
+  policies:
+  - policy-comp-operator
+  - policy-comp-scans
