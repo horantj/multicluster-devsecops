@@ -92,7 +92,7 @@ spec:
       - -f
       - spring-petclinic
     runAfter:
-    - crda-scan
+    - source-clone
     taskRef:
       kind: Task
       name: maven
@@ -113,7 +113,7 @@ spec:
       - -Dsonar.userHome=/tmp/sonar
       - -DskipTests=true
     runAfter:
-    - crda-scan
+    - source-clone
     taskRef:
       kind: Task
       name: maven
@@ -127,7 +127,7 @@ spec:
     - name: SOURCE_DIR
       value: spring-petclinic
     runAfter:
-    - crda-scan
+    - source-clone
     taskRef:
       kind: Task
       name: dependency-report
@@ -300,18 +300,6 @@ spec:
     workspaces:
     - name: simulations
       subPath: spring-petclinic-gatling
-      workspace: workspace
-  - name: crda-scan
-    params:
-    - name: manifest
-      value: pom.xml
-    runAfter:
-    - source-clone
-    taskRef:
-      kind: ClusterTask
-      name: crda-scan
-    workspaces:
-    - name: source
       workspace: workspace
   - name: syft-sbom
     params:
