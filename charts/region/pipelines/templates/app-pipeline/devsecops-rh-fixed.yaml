@@ -39,11 +39,11 @@ spec:
   - description: Copy FROM path
     name: FROM_PATH
     type: string
-    default: environments/dev
+    default: charts/region/spring-petclinic/environments/dev
   - description: Copy TO path
     name: TO_PATH
     type: string
-    default: environments/staging
+    default: charts/region/spring-petclinic/environments/staging
   tasks:
   - name: create-promote-pull-request
     params:
@@ -122,20 +122,6 @@ spec:
       workspace: workspace
     - name: maven-settings
       workspace: maven-settings
-  - name: dependency-report
-    params:
-    - name: SOURCE_DIR
-      value: spring-petclinic
-    runAfter:
-    - source-clone
-    taskRef:
-      kind: Task
-      name: dependency-report
-    workspaces:
-    - name: source
-      workspace: workspace
-    - name: maven-settings
-      workspace: maven-settings
   - name: release-app
     params:
     - name: GOALS
@@ -149,7 +135,6 @@ spec:
     runAfter:
     - code-analysis
     - unit-tests
-    - dependency-report
     taskRef:
       kind: Task
       name: maven
