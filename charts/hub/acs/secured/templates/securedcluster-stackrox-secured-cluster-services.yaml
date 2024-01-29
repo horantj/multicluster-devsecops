@@ -7,6 +7,11 @@ metadata:
   namespace: stackrox
 spec:
   clusterName: {{ (split "." .Values.global.localClusterDomain)._1 }}
+  sensor:
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "100m"
   auditLogs:
     collection: Auto
   admissionControl:
