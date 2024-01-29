@@ -39,11 +39,11 @@ spec:
   - description: Copy FROM path
     name: FROM_PATH
     type: string
-    default: charts/region/spring-petclinic/environments/dev
+    default: environments/dev
   - description: Copy TO path
     name: TO_PATH
     type: string
-    default: charts/region/spring-petclinic/environments/staging
+    default: environments/staging
   tasks:
   - name: create-promote-pull-request
     params:
